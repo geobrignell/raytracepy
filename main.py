@@ -36,31 +36,13 @@ while running:
         if event.type == pygame.QUIT:
             pygame.quit()
 
-    #Drawing
-    screen.fill(BLACK) #Refresh screen
+    #Drawing screen and boundary
+    screen.fill(BLACK)
     mouse_pos = pygame.mouse.get_pos()
     bound.draw(screen,WHITE)
     
-    
+    #Create and draw ray
     ray = Ray(10,250,mouse_pos[0],mouse_pos[1])
-
-    #Denominator
-    den = (bound.x1 - bound.x2) * (250 - mouse_pos[1]) - (bound.y1 - bound.y2) * (10 - mouse_pos[0])
-    if den != 0:
-        u = ((bound.x1 - 10) * (bound.y1 - bound.y2) - (bound.y1 - 250) * (bound.x1 - bound.x2))/den
-        t = ((bound.x1 - 10) * (250 - mouse_pos[1]) - (bound.y1 - 250) * (10 - mouse_pos[0]))/den
-
-    if t >= 0 and t<=1:
-        if u >= 0 and u <= 1:
-            point = (bound.x1 + t*(bound.x2 - bound.x1), bound.y1 + t*(bound.y2 - bound.y1))
-            pygame.draw.circle(screen, RED, point,4)
-            ray.x2 = point[0]
-            ray.y2 = point[1]
-            ray.draw(screen,WHITE) 
-        else:
-            ray.draw(screen,WHITE) 
-    else: ray.draw(screen,WHITE)
-       
+    ray.cast(bound,screen,WHITE)
 
     pygame.display.flip()
-    pygame.display.update()
