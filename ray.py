@@ -27,5 +27,6 @@ class Ray():
                 self.x2 = point[0]
                 self.y2 = point[1]
                 self.draw(screen,colour) 
+        
             # else:
             #     self.draw(screen,colour)

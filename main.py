@@ -9,7 +9,10 @@ https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection
 import pygame
 from boundary import Boundary
 from ray import Ray
+from lightsource import Lightsource
 import math
+import random
+
 
 #Initalise game
 pygame.init()
@@ -27,7 +30,11 @@ screen.fill(WHITE)
 pygame.display.set_caption('2D RayTracer')
 
 #Boundary/s and ray/s
-bound = Boundary(400,100,400,400)
+boundaries = []
+boundaries.append(Boundary(400,100,400,400))
+for i in range(3):
+    bound = Boundary(random.randrange(0,WIDTH),random.randrange(0,HEIGHT),random.randrange(0,WIDTH),random.randrange(0,HEIGHT))
+    boundaries.append(bound)
 
 
 #Game loop
@@ -42,18 +49,17 @@ while running:
     #Drawing screen and boundary
     screen.fill(BLACK)
     mouse_pos = pygame.mouse.get_pos()
-    bound.draw(screen,WHITE)
+    for bound in boundaries:
+        bound.draw(screen,WHITE)
     
+    light = Lightsource(mouse_pos[0],mouse_pos[1],WIDTH,HEIGHT)
+    light.illuminate()
 
-    rays = []
-    #Create and draw ray
-    view_size = math.sqrt(WIDTH**2+HEIGHT**2)
-    for angle in range(0,360,5):
-        rad = angle * math.pi / 180
-        ray_ = Ray(mouse_pos[0],mouse_pos[1],mouse_pos[0] + view_size*math.cos(rad), mouse_pos[1] + view_size*math.sin(rad))
-        rays.append(ray_)
-
-    for ray in rays:
+    for ray in light.rays:
+        closest_bound = boundaries[0]
+        for bound in boundaries:
+            pass
+            
         ray.cast(bound,screen,WHITE)
 
 
