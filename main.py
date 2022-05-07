@@ -41,6 +41,7 @@ while running:
     mouse_pos = pygame.mouse.get_pos()
     bound.draw(screen,WHITE)
     
+    
     ray = Ray(10,250,mouse_pos[0],mouse_pos[1])
 
     #Denominator
