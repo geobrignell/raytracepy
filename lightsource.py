@@ -12,7 +12,7 @@ class Lightsource():
     def illuminate(self):#Creates rays around the point
         view_size = math.sqrt(self.WIDTH**2+self.HEIGHT**2)
 
-        for angle in range(0,360,5):
+        for angle in range(0,360,2):
             rad = angle * math.pi / 180
 
             ray_ = Ray(self.x,self.y, self.x + view_size*math.cos(rad), self.y + view_size*math.sin(rad))

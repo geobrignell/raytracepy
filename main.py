@@ -3,14 +3,12 @@ George Brignell-Cash
 Ray-Tracer in Python
 
 links:
-https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection
+https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection Maths stuff
 """
 #imports
 import pygame
 from boundary import Boundary
-from ray import Ray
 from lightsource import Lightsource
-import math
 import random
 
 
@@ -24,17 +22,24 @@ BLACK = (0,0,0)
 WIDTH = 1000
 HEIGHT = 1000
 
-#Creating the screen
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-screen.fill(WHITE)
-pygame.display.set_caption('2D RayTracer')
+#Setting up the game window
+pygame.display.set_caption('2D RayTracer') #Name
+programIcon = pygame.image.load("icon.png")
+pygame.display.set_icon(programIcon) #Setting the icon
+screen = pygame.display.set_mode((WIDTH, HEIGHT)) #Setting the size
+screen.fill(BLACK)
 
-#Boundary/s and ray/s
+#Setting up bounderies
 boundaries = []
 boundaries.append(Boundary(400,100,400,400))
 for i in range(3):
     bound = Boundary(random.randrange(0,WIDTH),random.randrange(0,HEIGHT),random.randrange(0,WIDTH),random.randrange(0,HEIGHT))
     boundaries.append(bound)
+#Added "Walls" around the window
+boundaries.append(Boundary(0,0,WIDTH,0))
+boundaries.append(Boundary(0,0,0,HEIGHT))
+boundaries.append(Boundary(WIDTH,0,WIDTH,HEIGHT))
+boundaries.append(Boundary(0,HEIGHT,WIDTH,HEIGHT))
 
 
 #Game loop
