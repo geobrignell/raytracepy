@@ -9,5 +9,5 @@ Includes:
     boundary.py - Class for building bounderies.
     icon.PNG - Picture used for the pygame window icon.
 
-George Brignell-Cash    07.05.2022
+George BC   07.05.2022
 
