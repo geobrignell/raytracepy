@@ -1,4 +1,6 @@
+from numpy import Infinity
 import pygame
+from sympy import sqrt
 
 class Ray():
 
@@ -7,10 +9,14 @@ class Ray():
         self.y1 = y1
         self.x2 = x2
         self.y2 = y2
-    
+        
 
     def draw(self,screen,colour):
         pygame.draw.line(screen,colour,(self.x1,self.y1),(self.x2,self.y2))
+
+
+    def closest_bound(self,bounderies):
+        return bounderies[0]
 
 
     def cast(self,bound,screen,colour):
@@ -27,6 +33,3 @@ class Ray():
                 self.x2 = point[0]
                 self.y2 = point[1]
                 self.draw(screen,colour) 
-        
-            # else:
-            #     self.draw(screen,colour)
