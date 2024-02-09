@@ -1,6 +1,6 @@
 Two Dimensional Raytracer in Python
 
-Using Pygame to display a 2D raytracer, including light sources and bounderies for the user to change.
+Using Pygame to build a 2D raytracer, including a light source and bounderies for the user to change.
 
 Includes:
     main.py - Where the bounderies and light sources are created as well as the game loop.
