@@ -14,3 +14,6 @@ https://user-images.githubusercontent.com/89096835/167315531-d6b329c3-fe5b-49cc-
 
 George BC   07.05.2022
 
+![image](https://github.com/geobrignell/raytracepy/assets/89096835/6e09c06a-d1b9-4401-aaf9-ffe5d09bf1d2)
+
+
